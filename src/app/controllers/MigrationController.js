@@ -2,7 +2,7 @@ import Pokemons from '../models/Pokemons';
 import Types from '../models/Types';
 import Weather from '../models/Weather';
 
-import pokemons_old from '../models/pokemons.json';
+import pokemons_old from '../../../pokemons.json';
 
 class MigrationController {
 	async pokemons(req, res) {
