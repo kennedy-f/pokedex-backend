@@ -20,6 +20,7 @@ class Pokemons extends Model {
 				legendary: Sequelize.STRING,
 				cp1: Sequelize.STRING,
 				cp2: Sequelize.STRING,
+				status: Sequelize.STRING
 			},
 			{
 				sequelize,

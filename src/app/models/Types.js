@@ -8,8 +8,7 @@ class Types extends Model {
 			},
 			{
 				sequelize,
-                tableName: 'Types',
-                modelName : 'Types'
+                tableName: 'Types'
 			}
 		);
 		return this; 
