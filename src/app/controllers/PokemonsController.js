@@ -61,6 +61,66 @@ class PokemonsController {
 		return res.json(pokemons);
 	}
 
+	async show(req, res) {
+		const { name } = req.params;
+		const pokemon = await Pokemons.findOne({
+			where: { name },
+			attributes: [
+				'name',
+				'pokedex_number',
+				'family_id',
+				'cp1',
+				'atk',
+				'def',
+				'sta',
+			],
+			include: [
+				{
+					model: Types,
+					as: 'type1',
+					attributes: ['name'],
+				},
+				{
+					model: Types,
+					as: 'type2',
+					attributes: ['name'],
+				},
+			],
+		});
+		if (!pokemon) {
+			return res.status(400).json({ error: 'pokemon not found' });
+		}
+
+		const family = await Pokemons.findAll({
+			where: { family_id: pokemon.family_id },
+			attributes: [
+				'name',
+				'pokedex_number',
+				'family_id',
+				'cp1',
+				'atk',
+				'def',
+				'sta',
+			],
+			include: [
+				{
+					model: Types,
+					as: 'type1',
+					attributes: ['name'],
+				},
+				{
+					model: Types,
+					as: 'type2',
+					attributes: ['name'],
+				},
+			],
+		});
+		if (family) {
+			return res.json({ pokemon, family });
+		}
+		return res.json(pokemon);
+	}
+
 	async store(req, res) {
 		const {
 			name,

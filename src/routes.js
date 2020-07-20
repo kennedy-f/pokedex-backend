@@ -12,6 +12,7 @@ import WeatherController from './app/controllers/WeatherController';
 const routes = new Router();
 
 routes.get('/', PokemonsController.index);
+routes.get('/pokemon/:name', PokemonsController.show); 
 routes.post('/user', AdminController.create);
 routes.post('/user/login', SessionController.login);
 
