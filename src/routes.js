@@ -15,10 +15,16 @@ routes.get('/', PokemonsController.index);
 routes.post('/user/create', AdminController.create);
 routes.post('/user/login', SessionController.login);
 
-routes.get('/types', TypesController.index);
-routes.get('/weather', WeatherController.index);
 
 routes.use(authMiddleware);
+routes.get('/types', TypesController.index);
+routes.get('/types/:id', TypesController.show); 
+routes.put('/types/:id', TypesController.update); 
+
+routes.get('/weathers', WeatherController.index);
+routes.get('/weathers/:id', WeatherController.show);
+routes.put('/weathers/:id', WeatherController.update);
+
 
 routes.get('/ad/pokemons', PokemonsController.adIndex);
 routes.get('/ad/pokemons/:id', PokemonsController.adShow);
