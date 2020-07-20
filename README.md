@@ -13,6 +13,7 @@ O usuário não pode ser alterado, para manter a usabilidade da aplicação web.
 | Método | Rota |  Função | JWT |
 |--|--|--|--|
 | GET | / | Traz os pokemons | FALSE |
+| GET | /pokemon/:name | Traz os dados de um pokemon especifico | FALSE |
 | POST | /user/login | Faz login na aplicação | FALSE |
 | POST | /user| Cria um usuário | FALSE |
 | GET| /ad/pokemons | Traz os pokemons com alguns dados a mais (com o id que não apresento e não utilizo na aplicação web) | TRUE |
