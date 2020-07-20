@@ -12,11 +12,17 @@ import WeatherController from './app/controllers/WeatherController';
 const routes = new Router();
 
 routes.get('/', PokemonsController.index);
-routes.post('/user/create', AdminController.create);
+routes.post('/user', AdminController.create);
 routes.post('/user/login', SessionController.login);
 
-
 routes.use(authMiddleware);
+
+routes.get('/ad/pokemons', PokemonsController.adIndex);
+routes.get('/ad/pokemons/:id', PokemonsController.adShow);
+routes.post('/pokemons', PokemonsController.store);
+routes.put('/pokemons', PokemonsController.update);
+routes.delete('/pokemons', PokemonsController.delete);
+
 routes.get('/types', TypesController.index);
 routes.get('/types/:id', TypesController.show); 
 routes.put('/types/:id', TypesController.update); 
@@ -26,17 +32,12 @@ routes.get('/weathers/:id', WeatherController.show);
 routes.put('/weathers/:id', WeatherController.update);
 
 
-routes.get('/ad/pokemons', PokemonsController.adIndex);
-routes.get('/ad/pokemons/:id', PokemonsController.adShow);
-routes.post('/pokemons', PokemonsController.store);
-routes.put('/pokemons', PokemonsController.update);
-routes.delete('/pokemons', PokemonsController.delete);
 
 routes.get('/ad/type/weather', AdminController.typesAndWeather);
 
 //podem ser acessadas por get (nao esperam nenhum dado).
-routes.post('/migration/pokemons', MigrationController.pokemons);
-routes.post('/migration/types', MigrationController.types);
-routes.post('/migration/weather', MigrationController.weathers);
+// routes.post('/migration/pokemons', MigrationController.pokemons);
+// routes.post('/migration/types', MigrationController.types);
+// routes.post('/migration/weather', MigrationController.weathers);
 
 export default routes;

@@ -42,7 +42,7 @@ class PokemonsController {
 		const pokemons = await Pokemons.findAndCountAll({
 			where: whereFilter,
 			order: [[filter, order]],
-			attributes: ['id', 'name', 'pokedex_number'],
+			attributes: ['name', 'pokedex_number'],
 			include: [
 				{
 					model: Types,
